@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="500.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21.0.1" fx:controller="main.java.org.wellness.spa.agendamiento.administrativo.controller.recepcionista.LoginController">
+    <stylesheets>
+        <URL value="@/main/resources/css/login-view.css" />
+    </stylesheets>
+   <children>
+      <GridPane layoutX="-1.0" prefHeight="525.0" prefWidth="500.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="256.0" minHeight="10.0" prefHeight="237.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="351.0" minHeight="10.0" prefHeight="288.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="183.0" fitWidth="195.0" layoutX="159.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/imagen-logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="221.0" layoutY="179.0" text="Bienvenido" />
+               </children>
+            </Pane>
+            <Pane prefHeight="292.0" prefWidth="500.0" GridPane.rowIndex="1">
+               <children>
+                  <Label layoutX="100.0" layoutY="32.0" text="Usuario" />
+                  <PasswordField fx:id="txtContrasena" layoutX="100.0" layoutY="132.0" prefHeight="25.0" prefWidth="300.0" />
+                  <TextField fx:id="txtUsuario" layoutX="100.0" layoutY="49.0" prefHeight="25.0" prefWidth="300.0" />
+                  <Label layoutX="100.0" layoutY="115.0" text="Contraseña" />
+                  <Button layoutX="100.0" layoutY="196.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="25.0" prefWidth="144.0" text="Entrar" />
+                  <Button layoutX="256.0" layoutY="196.0" mnemonicParsing="false" onAction="#salir" prefHeight="25.0" prefWidth="144.0" text="Salir" />
+               </children>
+            </Pane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
