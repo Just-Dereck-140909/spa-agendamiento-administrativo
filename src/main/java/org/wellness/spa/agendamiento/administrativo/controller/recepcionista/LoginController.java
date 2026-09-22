@@ -1,16 +1,20 @@
 package main.java.org.wellness.spa.agendamiento.administrativo.controller.recepcionista;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import main.java.org.wellness.spa.agendamiento.administrativo.model.recepcionista.Recepcionista;
 import main.java.org.wellness.spa.agendamiento.administrativo.service.recepcionista.RecepcionistaService;
+import main.java.org.wellness.spa.agendamiento.administrativo.util.SceneManager;
 
 public class LoginController implements Initializable {
 
@@ -62,6 +66,18 @@ public class LoginController implements Initializable {
                     + "!"
             );
             alert.showAndWait();
+
+            SceneManager sceneManager = new SceneManager(
+            (Stage) ((Node) event.getSource()).getScene().getWindow()
+            );
+
+            try {
+                sceneManager.cambiarEscena(
+                        "/main/resources/view/menu-principal.fxml"
+                );
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         } else {
 
