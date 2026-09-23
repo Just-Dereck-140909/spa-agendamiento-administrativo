@@ -27,4 +27,37 @@ public class SceneManager {
         stage.setScene(scene);
         stage.show();
     }
+    
+    
+    public void abrirVentana(String rutaFXML, String titulo) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource(rutaFXML)
+        );
+
+        Parent root = loader.load();
+
+        Stage nuevaVentana = new Stage();
+        nuevaVentana.setTitle(titulo);
+        nuevaVentana.setScene(new Scene(root));
+
+        nuevaVentana.show();
+    }
+    
+    
+    public FXMLLoader abrirVentanaConControlador(String rutaFXML, String titulo) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource(rutaFXML));
+
+        Parent root = loader.load();
+
+        Stage nuevaVentana = new Stage();
+        nuevaVentana.setTitle(titulo);
+        nuevaVentana.setScene(new Scene(root));
+
+        nuevaVentana.show();
+
+        return loader;
+    }
 }

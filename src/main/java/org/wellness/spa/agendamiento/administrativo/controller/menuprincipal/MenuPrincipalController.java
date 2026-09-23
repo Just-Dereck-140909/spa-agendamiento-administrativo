@@ -1,10 +1,13 @@
 package main.java.org.wellness.spa.agendamiento.administrativo.controller.menuprincipal;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
 
+import javafx.scene.Node;
+import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +21,7 @@ import javafx.scene.image.ImageView;
 
 import main.java.org.wellness.spa.agendamiento.administrativo.model.cita.CitaResumen;
 import main.java.org.wellness.spa.agendamiento.administrativo.service.cita.CitaService;
+import main.java.org.wellness.spa.agendamiento.administrativo.util.SceneManager;
 
 public class MenuPrincipalController implements Initializable {
 
@@ -103,7 +107,17 @@ public class MenuPrincipalController implements Initializable {
 
     @FXML
     private void handleCitasAction(ActionEvent event) {
+        SceneManager sceneManager = new SceneManager(
+        (Stage)((Node) event.getSource()).getScene().getWindow()
+        );
         
+        try{
+            sceneManager.cambiarEscena(
+                    "/main/resources/view/cita/citas-view.fxml"
+            );
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -113,7 +127,17 @@ public class MenuPrincipalController implements Initializable {
 
     @FXML
     private void handleCerrarSesionAction(ActionEvent event) {
-        
+            SceneManager sceneManager = new SceneManager(
+                (Stage) ((Node) event.getSource()).getScene().getWindow()
+        );
+
+        try {
+            sceneManager.cambiarEscena(
+                    "/main/resources/view/login-view.fxml"
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     
@@ -138,7 +162,7 @@ public class MenuPrincipalController implements Initializable {
     
     
     private void cargarCitas() {
-        tablaCitas.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        tablaCitas.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
         tablaCitas.setItems(
                 FXCollections.observableArrayList
                 (citaService.listarCitasResumen()));
