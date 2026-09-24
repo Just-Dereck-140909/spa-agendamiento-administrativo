@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="330.0" prefWidth="380.0" spacing="15" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.org.wellness.spa.agendamiento.administrativo.controller.cliente.ClienteFormController">
+
+    <padding>
+        <Insets bottom="20" left="25" right="25" top="20" />
+    </padding>
+
+    <Label fx:id="lblTituloFormulario" text="Nuevo Cliente" />
+
+    <GridPane hgap="10" vgap="12">
+        <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints hgrow="ALWAYS" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+
+        <Label fx:id="lblNombre" text="Nombre" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="txtNombre" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label fx:id="lblApellido" text="Apellido" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="txtApellido" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label fx:id="lblTelefono" text="Telefono" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="txtTelefono" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label fx:id="lblCorreo" text="Correo" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="txtCorreo" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    </GridPane>
+
+    <HBox alignment="CENTER" spacing="15">
+        <Button fx:id="btnGuardar" onAction="#handleGuardarAction" text="Guardar" />
+        <Button fx:id="btnCerrar" onAction="#handleCerrarAction" text="Cerrar" />
+    </HBox>
+
+</VBox>

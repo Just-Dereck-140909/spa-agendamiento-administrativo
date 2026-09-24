@@ -7,5 +7,4 @@ public class Credentials {
     public static final String USER_DB =System.getenv("DB_USER");
     public static final String PASS_DB =System.getenv("DB_PASSWORD");
 
-
 }
