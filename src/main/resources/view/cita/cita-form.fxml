@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="450.0" prefWidth="380.0" spacing="15" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.org.wellness.spa.agendamiento.administrativo.controller.cita.CitaFormController">
+
+    <padding>
+        <Insets bottom="20" left="25" right="25" top="20" />
+    </padding>
+
+    <!-- Titulo dinamico: "Nueva Cita" o "Actualizar Cita", segun el modo -->
+    <Label fx:id="lblTituloFormulario" text="Nueva Cita" />
+
+    <!-- Campos del formulario -->
+    <GridPane hgap="10" vgap="12">
+        <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints hgrow="ALWAYS" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+
+        <Label text="Fecha" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <DatePicker fx:id="dpFecha" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Hora" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <ComboBox fx:id="cbHora" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Cliente" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <ComboBox fx:id="cbCliente" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Trabajador" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <ComboBox fx:id="cbTrabajador" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label text="Tratamiento" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <ComboBox fx:id="cbTratamiento" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <Label text="Estado" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <ComboBox fx:id="cbEstado" maxWidth="Infinity" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    </GridPane>
+
+    <!-- Botones de accion -->
+    <HBox alignment="CENTER" spacing="15">
+        <Button fx:id="btnGuardar" text="Guardar" onAction="#handleGuardarAction" />
+        <Button fx:id="btnCerrar" text="Cerrar" onAction="#handleCerrarAction" />
+    </HBox>
+
+</VBox>

@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
 
+import javafx.scene.Node;
+import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -126,17 +128,47 @@ public class MenuPrincipalController implements Initializable {
 
     @FXML
     private void handleCitasAction(ActionEvent event) {
+        SceneManager sceneManager = new SceneManager(
+        (Stage)((Node) event.getSource()).getScene().getWindow()
+        );
         
+        try{
+            sceneManager.cambiarEscena(
+                    "/main/resources/view/cita/citas-view.fxml"
+            );
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void handleTrabajadoresAction(ActionEvent event) {
-        
+        SceneManager sceneManager = new SceneManager(
+            (Stage)((Node) event.getSource()).getScene().getWindow()
+        );
+
+        try {
+            sceneManager.cambiarEscena(
+                    "/main/resources/view/trabajador/trabajadores-view.fxml"
+            );
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void handleCerrarSesionAction(ActionEvent event) {
-        
+            SceneManager sceneManager = new SceneManager(
+                (Stage) ((Node) event.getSource()).getScene().getWindow()
+        );
+
+        try {
+            sceneManager.cambiarEscena(
+                    "/main/resources/view/login-view.fxml"
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     
@@ -161,7 +193,7 @@ public class MenuPrincipalController implements Initializable {
     
     
     private void cargarCitas() {
-        tablaCitas.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        tablaCitas.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
         tablaCitas.setItems(
                 FXCollections.observableArrayList
                 (citaService.listarCitasResumen()));
