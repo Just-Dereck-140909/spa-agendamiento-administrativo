@@ -3,6 +3,7 @@ package main.java.org.wellness.spa.agendamiento.administrativo.controller.tratam
 import java.io.IOException;
 
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -168,7 +169,7 @@ public class TratamientosController {
 
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource(
-                            "/main/java/org/wellness/spa/agendamiento/administrativo/view/tratamiento/tratamiento-form.fxml"
+                            "/main/resources/view/tratamiento/tratamiento-form.fxml"
                     )
             );
 
@@ -211,34 +212,30 @@ public class TratamientosController {
     }
 
     @FXML
-    private void handleVolverMenuAction() {
-
+    private void handleVolverMenuAction(ActionEvent event) {
+ 
         try {
-
-            Stage stage = (Stage) ((Node) btnVolverMenu)
-                    .getScene()
-                    .getWindow();
-
-            SceneManager sceneManager = new SceneManager(stage);
-
-            sceneManager.cambiarEscena(
-                    "/main/java/org/wellness/spa/agendamiento/administrativo/view/menuprincipal/menu-principal.fxml"
+ 
+            SceneManager sceneManager = new SceneManager(
+                    (Stage) ((Node) event.getSource())
+                            .getScene()
+                            .getWindow()
             );
-
+ 
+            sceneManager.cambiarEscena(
+                    "/main/resources/view/menu-principal.fxml"
+            );
+ 
         } catch (IOException e) {
-
+ 
             mostrarMensaje(
                     Alert.AlertType.ERROR,
                     "Error",
                     "No se pudo regresar al menú principal."
             );
-
-            System.out.println(
-                    "Error al regresar al menú principal: "
-                    + e.getMessage()
-            );
         }
     }
+    
 
     private void mostrarMensaje(
             Alert.AlertType tipo,

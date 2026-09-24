@@ -1,11 +1,13 @@
 package main.java.org.wellness.spa.agendamiento.administrativo.controller.tratamiento;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -138,7 +140,39 @@ public class TratamientoFormController {
 
     @FXML
     private void handleCerrarAction() {
-        cerrarFormulario();
+
+        boolean hayDatos =
+                !txtNombreTratamiento.getText().trim().isEmpty()
+                || !txtCostoTratamiento.getText().trim().isEmpty()
+                || !txtDescripcionTratamiento.getText().trim().isEmpty()
+                || cbDuracionTratamiento.getValue() != null;
+
+        if (hayDatos) {
+
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+
+            alerta.setTitle("Cerrar formulario");
+            alerta.setHeaderText("Hay datos ingresados");
+            alerta.setContentText(
+                    "¿Está seguro de que desea cerrar? "
+                    + "Se perderán los datos ingresados."
+            );
+
+            ButtonType botonSi = new ButtonType("Sí");
+            ButtonType botonNo = new ButtonType("No");
+
+            alerta.getButtonTypes().setAll(botonSi, botonNo);
+
+            Optional<ButtonType> resultado = alerta.showAndWait();
+
+            if (resultado.isPresent() && resultado.get() == botonSi) {
+                cerrarFormulario();
+            }
+
+        } else {
+
+            cerrarFormulario();
+        }
     }
 
     private boolean validarCampos() {
