@@ -12,12 +12,14 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import main.java.org.wellness.spa.agendamiento.administrativo.model.cita.CitaResumen;
 import main.java.org.wellness.spa.agendamiento.administrativo.service.cita.CitaService;
@@ -113,8 +115,27 @@ public class MenuPrincipalController implements Initializable {
 
     @FXML
     private void handleTratamientosAction(ActionEvent event) {
-        
+
+    try {
+
+        Stage stage = (Stage) ((Node) event.getSource())
+                .getScene()
+                .getWindow();
+
+        SceneManager sceneManager = new SceneManager(stage);
+
+        sceneManager.cambiarEscena(
+                "/main/resources/view/tratamiento/tratamiento-view.fxml"
+        );
+
+    } catch (IOException e) {
+
+        System.out.println(
+                "Error al abrir la vista de tratamientos: "
+                + e.getMessage()
+        );
     }
+}
 
     @FXML
     private void handleCitasAction(ActionEvent event) {
@@ -133,7 +154,17 @@ public class MenuPrincipalController implements Initializable {
 
     @FXML
     private void handleTrabajadoresAction(ActionEvent event) {
-        
+        SceneManager sceneManager = new SceneManager(
+            (Stage)((Node) event.getSource()).getScene().getWindow()
+        );
+
+        try {
+            sceneManager.cambiarEscena(
+                    "/main/resources/view/trabajador/trabajadores-view.fxml"
+            );
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
