@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.control.ButtonType;
 
 import main.java.org.wellness.spa.agendamiento.administrativo.model.ocupacion.Ocupacion;
 import main.java.org.wellness.spa.agendamiento.administrativo.model.trabajador.Trabajador;
@@ -259,7 +261,35 @@ public class TrabajadorFormController implements Initializable {
 
     @FXML
     private void handleCerrarAction() {
+        
+    boolean hayDatos = !txtNombre.getText().trim().isEmpty()
+            || !txtApellido.getText().trim().isEmpty()
+            || cbOcupacion.getValue() != null;
+
+    if (hayDatos) {
+
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setTitle("Cerrar formulario");
+        alerta.setHeaderText("Hay datos ingresados");
+        alerta.setContentText(
+                "¿Está seguro de que desea cerrar? "
+                + "Se perderán los datos ingresados."
+        );
+
+        ButtonType botonSi = new ButtonType("Sí");
+        ButtonType botonNo = new ButtonType("No");
+
+        alerta.getButtonTypes().setAll(botonSi, botonNo);
+
+        Optional<ButtonType> resultado = alerta.showAndWait();
+
+        if (resultado.isPresent() && resultado.get() == botonSi) {
+            cerrarVentana();
+        }
+
+    } else {
         cerrarVentana();
+    }
     }
 
     private void cerrarVentana() {

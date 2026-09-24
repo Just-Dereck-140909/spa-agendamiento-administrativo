@@ -1,5 +1,6 @@
 package main.java.org.wellness.spa.agendamiento.administrativo.service.trabajador;
 
+import java.text.Normalizer;
 import java.util.List;
 
 import main.java.org.wellness.spa.agendamiento.administrativo.model.trabajador.Trabajador;
@@ -71,16 +72,27 @@ public class TrabajadorService {
 
     private String generarCorreo(String nombre, String apellido, String idTrabajador) {
 
-        String nombreLimpio = nombre.trim().toLowerCase();
-        String apellidoLimpio = apellido.trim().toLowerCase();
+    String nombreLimpio = normalizarTexto(nombre);
+    String apellidoLimpio = normalizarTexto(apellido);
 
-        String ultimosTresDigitos =
-                idTrabajador.substring(idTrabajador.length() - 3);
+    String ultimosTresDigitos =
+            idTrabajador.substring(idTrabajador.length() - 3);
 
-        return nombreLimpio
-                + "."
-                + apellidoLimpio
-                + ultimosTresDigitos
-                + "@wellness.spa.com";
-    }
+    return nombreLimpio
+            + "."
+            + apellidoLimpio
+            + ultimosTresDigitos
+            + "@wellness.spa.com";
+}
+
+        private String normalizarTexto(String texto) {
+
+            String textoNormalizado = Normalizer.normalize(
+                    texto.trim().toLowerCase(),
+                    Normalizer.Form.NFD
+            );
+
+            return textoNormalizado
+                    .replaceAll("\\p{M}", "");
+        }
 }
