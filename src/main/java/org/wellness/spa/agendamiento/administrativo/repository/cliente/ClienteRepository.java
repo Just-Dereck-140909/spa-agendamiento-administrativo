@@ -1,8 +1,9 @@
-package main.java.org.wellness.spa.agendamiento.administrativo.repository.clientes;
+package main.java.org.wellness.spa.agendamiento.administrativo.repository.cliente;
 
 import main.java.org.wellness.spa.agendamiento.administrativo.model.cliente.Cliente;
 import main.java.org.wellness.spa.agendamiento.administrativo.config.DataBaseConnection;
 import main.java.org.wellness.spa.agendamiento.administrativo.crud.Crud;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +16,11 @@ public class ClienteRepository implements Crud<Cliente> {
 
     @Override
     public void save(Cliente cliente) {
-        String sql = "INSERT INTO cliente (id_cliente, nombre_cliente, apellido_cliente, telefono_cliente, cliente_correo_electronico) VALUES (?, ?, ?, ?, ?)";
+
+        String sql = "INSERT INTO cliente "
+                + "(id_cliente, nombre_cliente, apellido_cliente, "
+                + "telefono_cliente, cliente_correo_electronico) "
+                + "VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conexion = DataBaseConnection.getConnectionDataBase();
              PreparedStatement ps = conexion.prepareStatement(sql)) {
@@ -35,7 +40,12 @@ public class ClienteRepository implements Crud<Cliente> {
 
     @Override
     public void update(Cliente cliente) {
-        String sql = "UPDATE cliente SET nombre_cliente = ?, apellido_cliente = ?, telefono_cliente = ?, cliente_correo_electronico = ? WHERE id_cliente = ?";
+
+        String sql = "UPDATE cliente SET "
+                + "nombre_cliente = ?, "
+                + "apellido_cliente = ?, "
+                + "telefono_cliente = ? "
+                + "WHERE id_cliente = ?";
 
         try (Connection conexion = DataBaseConnection.getConnectionDataBase();
              PreparedStatement ps = conexion.prepareStatement(sql)) {
@@ -43,8 +53,7 @@ public class ClienteRepository implements Crud<Cliente> {
             ps.setString(1, cliente.getNombreCliente());
             ps.setString(2, cliente.getApellidoCliente());
             ps.setString(3, cliente.getTelefonoCliente());
-            ps.setString(4, cliente.getClienteCorreoElectronico());
-            ps.setString(5, cliente.getIdCliente());
+            ps.setString(4, cliente.getIdCliente());
 
             ps.executeUpdate();
 
@@ -55,6 +64,7 @@ public class ClienteRepository implements Crud<Cliente> {
 
     @Override
     public void deleteById(String id) {
+
         String sql = "DELETE FROM cliente WHERE id_cliente = ?";
 
         try (Connection conexion = DataBaseConnection.getConnectionDataBase();
@@ -70,7 +80,9 @@ public class ClienteRepository implements Crud<Cliente> {
 
     @Override
     public List<Cliente> listar() {
+
         List<Cliente> clientes = new ArrayList<>();
+
         String sql = "SELECT * FROM cliente ORDER BY id_cliente";
 
         try (Connection conexion = DataBaseConnection.getConnectionDataBase();
@@ -90,6 +102,7 @@ public class ClienteRepository implements Crud<Cliente> {
 
     @Override
     public Cliente buscarPorId(String id) {
+
         String sql = "SELECT * FROM cliente WHERE id_cliente = ?";
 
         try (Connection conexion = DataBaseConnection.getConnectionDataBase();
@@ -98,6 +111,7 @@ public class ClienteRepository implements Crud<Cliente> {
             ps.setString(1, id);
 
             try (ResultSet rs = ps.executeQuery()) {
+
                 if (rs.next()) {
                     return mapearCliente(rs);
                 }
@@ -111,7 +125,11 @@ public class ClienteRepository implements Crud<Cliente> {
     }
 
     public String obtenerUltimoId() {
-        String sql = "SELECT id_cliente FROM cliente ORDER BY id_cliente DESC LIMIT 1";
+
+        String sql = "SELECT id_cliente "
+                + "FROM cliente "
+                + "ORDER BY id_cliente DESC "
+                + "LIMIT 1";
 
         try (Connection conexion = DataBaseConnection.getConnectionDataBase();
              Statement st = conexion.createStatement();
@@ -129,6 +147,7 @@ public class ClienteRepository implements Crud<Cliente> {
     }
 
     private Cliente mapearCliente(ResultSet rs) throws SQLException {
+
         return new Cliente(
                 rs.getString("id_cliente"),
                 rs.getString("nombre_cliente"),

@@ -98,6 +98,17 @@ public class MenuPrincipalController implements Initializable {
     @FXML
     private void handleClientesAction(ActionEvent event) {
         
+        SceneManager sceneManager = new SceneManager(
+                (Stage) ((Node) event.getSource()).getScene().getWindow()
+        );
+
+        try {
+            sceneManager.cambiarEscena(
+                    "/main/resources/view/cliente/cliente-view.fxml"
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
