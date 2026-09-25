@@ -232,4 +232,32 @@ public class TrabajadorRepository implements Crud<Trabajador> {
 
         return trabajadores;
     }
+    
+    public boolean tieneCitasAsociadas(String idTrabajador) {
+
+        String sql = "SELECT COUNT(*) "
+                + "FROM cita "
+                + "WHERE id_trabajador = ?";
+
+        try (Connection connection = DataBaseConnection.getConnectionDataBase();
+                PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, idTrabajador);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+
+                if (resultSet.next()) {
+                    return resultSet.getInt(1) > 0;
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println(
+                    "Error al comprobar citas del trabajador: "
+                    + e.getMessage()
+            );
+        }
+
+        return false;
+    }
 }

@@ -52,6 +52,10 @@ public class TrabajadorService {
     public List<TrabajadorDetalle> listarTrabajadoresDetalle() {
         return trabajadorRepository.listarTrabajadoresDetalle();
     }
+    
+    public boolean tieneCitasAsociadas(String idTrabajador) {
+        return trabajadorRepository.tieneCitasAsociadas(idTrabajador);
+    }
 
     private String generarSiguienteId() {
 

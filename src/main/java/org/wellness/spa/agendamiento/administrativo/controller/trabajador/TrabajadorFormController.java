@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Optional;
+import javafx.application.Platform;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -63,7 +64,20 @@ public class TrabajadorFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         cargarOcupaciones();
+
+        Platform.runLater(() -> {
+
+            Stage stage = (Stage) btnCerrar.getScene().getWindow();
+
+            stage.setOnCloseRequest(event -> {
+
+                if (!confirmarCierre()) {
+                    event.consume();
+                }
+            });
+        });
     }
     
     
@@ -261,14 +275,21 @@ public class TrabajadorFormController implements Initializable {
 
     @FXML
     private void handleCerrarAction() {
-        
-    boolean hayDatos = !txtNombre.getText().trim().isEmpty()
-            || !txtApellido.getText().trim().isEmpty()
-            || cbOcupacion.getValue() != null;
 
-    if (hayDatos) {
+        if (confirmarCierre()) {
+            cerrarVentana();
+        }
+    }
+    
+    
+    private boolean confirmarCierre() {
+
+        if (!hayDatosIngresados()) {
+            return true;
+        }
 
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+
         alerta.setTitle("Cerrar formulario");
         alerta.setHeaderText("Hay datos ingresados");
         alerta.setContentText(
@@ -283,13 +304,16 @@ public class TrabajadorFormController implements Initializable {
 
         Optional<ButtonType> resultado = alerta.showAndWait();
 
-        if (resultado.isPresent() && resultado.get() == botonSi) {
-            cerrarVentana();
-        }
-
-    } else {
-        cerrarVentana();
+        return resultado.isPresent()
+                && resultado.get() == botonSi;
     }
+        
+        
+    private boolean hayDatosIngresados() {
+
+        return !txtNombre.getText().trim().isEmpty()
+                || !txtApellido.getText().trim().isEmpty()
+                || cbOcupacion.getValue() != null;
     }
 
     private void cerrarVentana() {

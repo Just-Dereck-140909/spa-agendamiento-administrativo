@@ -46,4 +46,9 @@ public class TratamientoService {
     public Tratamiento buscarPorId(String id) {
         return tratamientoRepository.buscarPorId(id);
     }
+    
+    public boolean tieneCitasAsociadas(String idTratamiento) {
+        return tratamientoRepository.tieneCitasAsociadas(idTratamiento);
+    }
+    
 }
