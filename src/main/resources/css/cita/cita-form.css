@@ -1,0 +1,183 @@
+.root {
+    -fx-background-color: #629988;
+    -fx-font-family: "Georgia";
+}
+
+/* Título */
+
+#lblTituloFormulario {
+    -fx-text-fill: white;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 0 8px 0;
+}
+
+/* Etiquetas */
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* DatePicker */
+
+.date-picker {
+    -fx-background-color: #E8B2AA;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-width: 2px;
+    -fx-border-color: #A5B8B1;
+}
+
+.date-picker:hover {
+    -fx-border-color: #F8EEEC;
+}
+
+.date-picker:focused {
+    -fx-border-color: #F8EEEC;
+    -fx-effect: dropshadow(gaussian, #E9B4AF, 12, 0.45, 0, 0);
+}
+
+.date-picker .text-field {
+    -fx-background-color: #E8B2AA;
+    -fx-text-fill: #2E4053;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-background-radius: 8px 0 0 8px;
+    -fx-border-width: 0;
+    -fx-padding: 9px 12px;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #A5B8B1;
+    -fx-background-radius: 0 8px 8px 0;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #F8EEEC;
+}
+
+/* ComboBox */
+
+.combo-box {
+    -fx-background-color: #E8B2AA;
+    -fx-text-fill: #2E4053;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-width: 2px;
+    -fx-border-color: #A5B8B1;
+}
+
+.combo-box:hover {
+    -fx-border-color: #F8EEEC;
+}
+
+.combo-box:focused {
+    -fx-border-color: #F8EEEC;
+    -fx-effect: dropshadow(gaussian, #E9B4AF, 12, 0.45, 0, 0);
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #E8B2AA;
+    -fx-text-fill: #2E4053;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+}
+
+/* Lista desplegable */
+
+.combo-box-popup .list-view {
+    -fx-background-color: #F8EEEC;
+    -fx-border-color: #A5B8B1;
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: #F8EEEC;
+    -fx-text-fill: #2E4053;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #E8B2AA;
+}
+
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: #629988;
+    -fx-text-fill: white;
+}
+
+/* ComboBox deshabilitado - Estado */
+
+#cbEstado {
+    -fx-opacity: 0.75;
+}
+
+#cbEstado .list-cell {
+    -fx-background-color: #A5B8B1;
+    -fx-text-fill: #2E4053;
+}
+
+/* Botones */
+
+.button {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-padding: 10px 20px;
+}
+
+/* Guardar */
+
+#btnGuardar {
+    -fx-background-color: #2E6F61;
+    -fx-text-fill: white;
+    -fx-border-color: #A5B8B1;
+}
+
+#btnGuardar:hover {
+    -fx-background-color: #24594E;
+    -fx-text-fill: white;
+    -fx-border-color: #E8B2AA;
+    -fx-effect: dropshadow(gaussian, #E8B2AA, 14, 0.5, 0, 0);
+}
+
+#btnGuardar:focused {
+    -fx-background-color: #24594E;
+    -fx-text-fill: white;
+    -fx-border-color: #E8B2AA;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, #E8B2AA, 16, 0.6, 0, 0);
+}
+
+/* Cerrar */
+
+#btnCerrar {
+    -fx-background-color: #8C2D38;
+    -fx-text-fill: white;
+    -fx-border-color: #8C2D38;
+}
+
+#btnCerrar:hover {
+    -fx-background-color: #A63A45;
+    -fx-text-fill: white;
+    -fx-border-color: #E8B2AA;
+    -fx-effect: dropshadow(gaussian, #E8B2AA, 14, 0.5, 0, 0);
+}
+
+#btnCerrar:focused {
+    -fx-background-color: #A63A45;
+    -fx-text-fill: white;
+    -fx-border-color: #E8B2AA;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, #E8B2AA, 16, 0.6, 0, 0);
+}

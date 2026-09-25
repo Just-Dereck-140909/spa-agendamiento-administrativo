@@ -1,0 +1,181 @@
+.root {
+    -fx-background-color: #F8EEEC;
+    -fx-font-family: "Georgia";
+}
+
+/* Encabezado */
+
+HBox {
+    -fx-background-color: #E8B2AA;
+}
+
+#lblNombreEmpresa {
+    -fx-text-fill: #2E4053;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+#lblTituloSeccion {
+    -fx-text-fill: #2E4053;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+/* Botones */
+
+.button {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2E4053;
+    -fx-background-color: #A5B8B1;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: #629988;
+    -fx-cursor: hand;
+    -fx-padding: 10px 15px;
+}
+
+/* Nuevo cliente */
+
+#btnNuevoCliente {
+    -fx-background-color: #A5B8B1;
+    -fx-border-color: #629988;
+}
+
+#btnNuevoCliente:hover {
+    -fx-background-color: #629988;
+    -fx-text-fill: white;
+    -fx-border-color: #2E4053;
+    -fx-effect: dropshadow(gaussian, #A5B8B1, 12, 0.45, 0, 0);
+}
+
+#btnNuevoCliente:focused {
+    -fx-background-color: #629988;
+    -fx-text-fill: white;
+    -fx-border-color: #2E4053;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, #A5B8B1, 14, 0.55, 0, 0);
+}
+
+/* Actualizar cliente */
+
+#btnActualizarCliente {
+    -fx-background-color: #A5B8B1;
+    -fx-border-color: #629988;
+}
+
+#btnActualizarCliente:hover {
+    -fx-background-color: #629988;
+    -fx-text-fill: white;
+    -fx-border-color: #2E4053;
+    -fx-effect: dropshadow(gaussian, #A5B8B1, 12, 0.45, 0, 0);
+}
+
+#btnActualizarCliente:focused {
+    -fx-background-color: #629988;
+    -fx-text-fill: white;
+    -fx-border-color: #2E4053;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, #A5B8B1, 14, 0.55, 0, 0);
+}
+
+/* Eliminar cliente */
+
+#btnEliminarCliente {
+    -fx-background-color: #A5B8B1;
+    -fx-border-color: #629988;
+}
+
+#btnEliminarCliente:hover {
+    -fx-background-color: #629988;
+    -fx-text-fill: white;
+    -fx-border-color: #2E4053;
+    -fx-effect: dropshadow(gaussian, #A5B8B1, 12, 0.45, 0, 0);
+}
+
+#btnEliminarCliente:focused {
+    -fx-background-color: #629988;
+    -fx-text-fill: white;
+    -fx-border-color: #2E4053;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, #A5B8B1, 14, 0.55, 0, 0);
+}
+
+/* Tabla de clientes */
+
+.table-view {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8px;
+    -fx-border-color: #A5B8B1;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1.5px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #E8B2AA;
+    -fx-background-radius: 7px 7px 0 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #2E4053;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #F8EEEC;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #F3DCD9;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #E9B4AF;
+    -fx-text-fill: #2E4053;
+}
+
+.table-cell {
+    -fx-text-fill: #2E4053;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Volver al menú */
+
+#btnVolverMenu {
+    -fx-background-color: #629988;
+    -fx-text-fill: white;
+    -fx-border-color: #629988;
+}
+
+#btnVolverMenu:hover {
+    -fx-background-color: #A5B8B1;
+    -fx-text-fill: #2E4053;
+    -fx-border-color: #2E4053;
+    -fx-effect: dropshadow(gaussian, #A5B8B1, 14, 0.5, 0, 0);
+}
+
+#btnVolverMenu:focused {
+    -fx-background-color: #629988;
+    -fx-text-fill: white;
+    -fx-border-color: #E9B4AF;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, #E9B4AF, 16, 0.55, 0, 0);
+}

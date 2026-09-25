@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.org.wellness.spa.agendamiento.administrativo.controller.recepcionista.LoginController">
+
+    <stylesheets>
+        <URL value="@../../css/login/login-view.css" />
+    </stylesheets>
+
+    <children>
+
+        <GridPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+            <columnConstraints>
+
+                <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+
+                <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+
+            </columnConstraints>
+
+            <!-- Lado izquierdo -->
+
+            <VBox alignment="CENTER" spacing="15.0" GridPane.columnIndex="0">
+            <AnchorPane prefHeight="388.0" prefWidth="405.0">
+               <children>
+      
+                      <!-- Burbuja del formulario -->
+      
+                      <VBox alignment="CENTER" layoutY="15.0" maxWidth="404.0" prefHeight="411.0" prefWidth="404.0" spacing="15.0" styleClass="login-box">
+         
+                               <ImageView fitHeight="111.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true">
+         
+                                   <image>
+                                 <Image url="@../../image/imagen-logo.png" />
+                             </image>
+         
+                               </ImageView>
+         
+                         <Label styleClass="titulo-bienvenida" text="Bienvenido" />
+      
+                          <Label text="Usuario" />
+      
+                          <TextField fx:id="txtUsuario" maxWidth="300.0" prefHeight="40.0" prefWidth="174.0" />
+      
+                          <Label text="Contraseña" />
+      
+                          <PasswordField fx:id="txtContrasena" maxWidth="300.0" prefHeight="40.0" />
+      
+                          <GridPane hgap="12.0" maxWidth="300.0">
+      
+                              <columnConstraints>
+      
+                                  <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+      
+                                  <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+      
+                              </columnConstraints>
+      
+                              <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="40.0" text="Entrar" GridPane.columnIndex="0" />
+      
+                              <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#salir" prefHeight="40.0" text="Salir" GridPane.columnIndex="1" />
+      
+                              <rowConstraints>
+                                  <RowConstraints />
+                              </rowConstraints>
+      
+                          </GridPane>
+      
+                      </VBox>
+               </children>
+            </AnchorPane>
+
+            </VBox>
+
+             <ImageView fitHeight="437.0" fitWidth="401.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+
+                 <image>
+                     <Image url="@../../image/imagen-login.png" />
+                 </image>
+
+             </ImageView>
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ddead" height="401.0" opacity="0.61" stroke="BLACK" strokeType="INSIDE" width="405.0" GridPane.columnIndex="1" />
+         <Pane prefHeight="600.0" prefWidth="396.0" GridPane.columnIndex="1">
+            <children>
+      
+                   <Label layoutX="36.0" layoutY="513.0" prefHeight="50.0" prefWidth="369.0" styleClass="titulo-imagen" text="Centro de relajación y bienestar integral &#10;dedicado a renovar tu cuerpo y mente &#10;a través de terapias exclusivas&#10;" textAlignment="CENTER">
+                  <font>
+                     <Font />
+                  </font></Label>
+      
+                   <Label layoutX="95.0" layoutY="75.0" styleClass="subtitulo-imagen" text="Bienestar, relajación y cuidado" />
+            </children>
+         </Pane>
+
+            <rowConstraints>
+                <RowConstraints />
+            </rowConstraints>
+
+        </GridPane>
+
+    </children>
+
+</AnchorPane>

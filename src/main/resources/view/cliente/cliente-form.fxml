@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="280.0" prefWidth="380.0" spacing="15.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.org.wellness.spa.agendamiento.administrativo.controller.cliente.ClienteFormController">
+<VBox prefHeight="280.0" prefWidth="380.0" spacing="15.0" stylesheets="main/resources/css/cliente/cliente-form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.org.wellness.spa.agendamiento.administrativo.controller.cliente.ClienteFormController">
 
     <padding>
         <Insets bottom="20" left="25" right="25" top="20" />

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane minHeight="600.0" minWidth="850.0" prefHeight="650.0" prefWidth="1000.0" stylesheets="main/resources/css/menuprincipal/menu-principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.org.wellness.spa.agendamiento.administrativo.controller.menuprincipal.MenuPrincipalController">
+
+    <!-- HEADER -->
+    <top>
+        <VBox>
+
+            <!-- Encabezado principal -->
+            <HBox alignment="CENTER_LEFT" spacing="20" BorderPane.alignment="CENTER">
+
+                <padding>
+                    <Insets bottom="12" left="25" right="25" top="15" />
+                </padding>
+            <Pane prefHeight="9.0" prefWidth="121.0">
+               <children>
+      
+                      <ImageView fx:id="imgLogo" fitHeight="117.0" fitWidth="100.0" layoutX="30.0" layoutY="-24.0" preserveRatio="true">
+      
+                          <Image url="@../../image/imagen-logo.png" />
+      
+                      </ImageView>
+               </children>
+            </Pane>
+
+                <Label fx:id="lblBienvenida" text="Bienvenido al programa - Wellness Spa">
+
+                    <HBox.margin>
+                        <Insets left="10" />
+                    </HBox.margin>
+
+                </Label>
+
+                <Region HBox.hgrow="ALWAYS" />
+            <Pane prefHeight="0.0" prefWidth="71.0" />
+
+                                  <ImageView fx:id="imgIcono" fitHeight="67.0" fitWidth="58.0" preserveRatio="true">
+
+                                      <Image url="@../../image/imagen-icono.png" />
+
+                                  </ImageView>
+
+            </HBox>
+
+            <!-- MenuBar decorativo -->
+            <MenuBar>
+
+                <Menu text="Relajación">
+                    <items>
+                        <MenuItem text="Bienestar" />
+                    </items>
+                </Menu>
+
+                <Menu text="Tratamiento">
+                    <items>
+                        <MenuItem text="Servicios" />
+                    </items>
+                </Menu>
+
+                <Menu text="Bienestar">
+                    <items>
+                        <MenuItem text="Experiencia Wellness" />
+                    </items>
+                </Menu>
+
+            </MenuBar>
+
+        </VBox>
+    </top>
+
+    <!-- MENU LATERAL -->
+    <left>
+        <BorderPane prefWidth="270.0" BorderPane.alignment="TOP_CENTER">
+
+            <padding>
+                <Insets bottom="20" left="15" right="15" top="20" />
+            </padding>
+
+            <!-- Texto guía -->
+            <top>
+                <Label fx:id="lblDescripcionMenu" text="Selecciona una opción para administrar la información del spa." wrapText="true" BorderPane.alignment="TOP_LEFT" />
+            </top>
+
+            <!-- Botones -->
+            <center>
+                <VBox alignment="CENTER" spacing="15" BorderPane.alignment="CENTER">
+
+                    <GridPane hgap="10" vgap="10">
+
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="50" />
+                            <ColumnConstraints percentWidth="50" />
+                        </columnConstraints>
+
+                        <rowConstraints>
+                            <RowConstraints />
+                            <RowConstraints />
+                        </rowConstraints>
+
+                        <Button fx:id="btnClientes" maxWidth="Infinity" onAction="#handleClientesAction" text="Clientes" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+
+                        <Button fx:id="btnTratamientos" maxWidth="Infinity" onAction="#handleTratamientosAction" text="Tratamientos" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                        <Button fx:id="btnCitas" maxWidth="Infinity" onAction="#handleCitasAction" text="Citas" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
+                        <Button fx:id="btnTrabajadores" maxWidth="Infinity" onAction="#handleTrabajadoresAction" text="Trabajadores" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                    </GridPane>
+
+                    <Button fx:id="btnCerrarSesion" maxWidth="Infinity" onAction="#handleCerrarSesionAction" text="Cerrar Sesión">
+
+                        <VBox.margin>
+                            <Insets top="10" />
+                        </VBox.margin>
+
+                    </Button>
+
+                </VBox>
+            </center>
+
+        </BorderPane>
+    </left>
+
+    <!-- CONTENIDO CENTRAL -->
+    <center>
+        <VBox spacing="12" BorderPane.alignment="CENTER">
+
+            <padding>
+                <Insets bottom="15" left="15" right="20" top="15" />
+            </padding>
+
+            <Label fx:id="lblTituloTabla" text="Resumen de Citas" />
+
+            <TableView fx:id="tablaCitas" VBox.vgrow="ALWAYS">
+
+                <columns>
+
+                    <TableColumn fx:id="colNombreCliente" prefWidth="100" text="Nombre Cliente" />
+
+                    <TableColumn fx:id="colApellidoCliente" prefWidth="100" text="Apellido Cliente" />
+
+                    <TableColumn fx:id="colTrabajador" prefWidth="120" text="Trabajador" />
+
+                    <TableColumn fx:id="colTratamiento" prefWidth="130" text="Tratamiento" />
+
+                    <TableColumn fx:id="colDescripcionTratamiento" prefWidth="220" text="Descripción" />
+
+                    <TableColumn fx:id="colHora" prefWidth="70" text="Hora" />
+
+                    <TableColumn fx:id="colFecha" prefWidth="90" text="Fecha" />
+
+                    <TableColumn fx:id="colEstado" prefWidth="100" text="Estado" />
+
+                </columns>
+
+            </TableView>
+
+        </VBox>
+    </center>
+
+    <!-- BANNER INFERIOR -->
+    <bottom>
+        <ImageView fitHeight="70.0" fitWidth="1000.0" preserveRatio="false" smooth="true">
+
+            <Image url="@../../image/imagen-banner.png" />
+
+        </ImageView>
+    </bottom>
+
+</BorderPane>

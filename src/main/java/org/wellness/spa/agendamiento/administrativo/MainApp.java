@@ -12,7 +12,9 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
 
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/main/resources/view/login-view.fxml")
+                getClass().getResource(
+                        "/main/resources/view/login/login-view.fxml"
+                )
         );
 
         Parent root = loader.load();
@@ -20,6 +22,10 @@ public class MainApp extends Application {
         Scene scene = new Scene(root);
 
         stage.setTitle("Wellness Spa");
+
+        // Ventana con tamaño fijo
+        stage.setResizable(false);
+
         stage.setScene(scene);
         stage.show();
     }

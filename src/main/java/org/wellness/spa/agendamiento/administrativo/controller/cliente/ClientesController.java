@@ -195,7 +195,7 @@ private Button btnVolverMenu;
                     = new SceneManager(stageActual);
 
             sceneManager.cambiarEscena(
-                    "/main/resources/view/menu-principal.fxml"
+                    "/main/resources/view/menuprincipal/menu-principal.fxml"
             );
 
         } catch (IOException e) {
