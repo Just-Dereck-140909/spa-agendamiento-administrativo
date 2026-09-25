@@ -42,7 +42,6 @@ public class RecepcionistaRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al buscar el recepcionista: " + e.getMessage());
         }
 
         return null;

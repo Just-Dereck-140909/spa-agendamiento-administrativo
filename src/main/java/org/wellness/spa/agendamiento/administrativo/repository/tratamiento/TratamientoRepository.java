@@ -39,7 +39,6 @@ public class TratamientoRepository implements Crud<Tratamiento> {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Error al guardar el tratamiento: " + e.getMessage());
         }
     }
 
@@ -67,7 +66,6 @@ public class TratamientoRepository implements Crud<Tratamiento> {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Error al actualizar el tratamiento: " + e.getMessage());
         }
     }
 
@@ -87,7 +85,6 @@ public class TratamientoRepository implements Crud<Tratamiento> {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Error al eliminar el tratamiento: " + e.getMessage());
         }
     }
 
@@ -125,7 +122,6 @@ public class TratamientoRepository implements Crud<Tratamiento> {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al listar los tratamientos: " + e.getMessage());
         }
 
         return lista;
@@ -166,7 +162,6 @@ public class TratamientoRepository implements Crud<Tratamiento> {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al buscar el tratamiento: " + e.getMessage());
         }
 
         return null;
@@ -190,7 +185,6 @@ public class TratamientoRepository implements Crud<Tratamiento> {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al obtener el último ID de tratamiento: " + e.getMessage());
         }
 
         return null;
@@ -216,7 +210,6 @@ public class TratamientoRepository implements Crud<Tratamiento> {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return false;

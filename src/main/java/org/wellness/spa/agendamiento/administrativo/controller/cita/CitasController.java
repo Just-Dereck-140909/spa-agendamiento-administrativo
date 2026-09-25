@@ -75,6 +75,11 @@ public class CitasController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         configurarColumnas();
+
+        tablaCitas.setColumnResizePolicy(
+                TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN
+        );
+
         cargarCitas();
     }
     
@@ -95,7 +100,6 @@ public class CitasController implements Initializable {
         CitaFormController controller = loader.getController();
         controller.setCitasController(this);
             } catch (IOException e) {
-                e.printStackTrace();
             }
     }
 
@@ -141,7 +145,6 @@ public class CitasController implements Initializable {
             controller.prepararEdicion(cita);
 
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -194,8 +197,6 @@ public class CitasController implements Initializable {
                         "Error al eliminar",
                         "No se pudo eliminar la cita."
                 );
-
-                e.printStackTrace();
             }
         }
     }
@@ -221,7 +222,6 @@ public class CitasController implements Initializable {
                     "No se pudo regresar al menú principal."
             );
 
-            e.printStackTrace();
         }
     }
     

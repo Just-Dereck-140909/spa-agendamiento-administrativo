@@ -134,8 +134,6 @@ public class TrabajadorFormController implements Initializable {
                     "Error",
                     "Ocurrió un error al guardar el trabajador."
             );
-
-            e.printStackTrace();
         }
     }
 

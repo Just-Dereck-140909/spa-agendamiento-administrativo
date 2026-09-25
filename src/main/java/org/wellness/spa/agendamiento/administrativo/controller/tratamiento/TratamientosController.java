@@ -63,6 +63,11 @@ public class TratamientosController {
     private void initialize() {
 
         configurarColumnas();
+
+        tablaTratamientos.setColumnResizePolicy(
+                TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN
+        );
+
         cargarTratamientos();
     }
 
@@ -216,11 +221,6 @@ public class TratamientosController {
                     Alert.AlertType.ERROR,
                     "Error",
                     "No se pudo abrir el formulario de tratamiento."
-            );
-
-            System.out.println(
-                    "Error al abrir el formulario de tratamiento: "
-                    + e.getMessage()
             );
         }
     }

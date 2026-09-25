@@ -40,7 +40,6 @@ public class CitaFormRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al listar clientes para citas: " + e.getMessage());
         }
 
         return lista;
@@ -73,7 +72,6 @@ public class CitaFormRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al listar trabajadores para citas: " + e.getMessage());
         }
 
         return lista;
@@ -106,7 +104,6 @@ public class CitaFormRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al listar tratamientos para citas: " + e.getMessage());
         }
 
         return lista;

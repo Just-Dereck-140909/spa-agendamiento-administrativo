@@ -62,7 +62,13 @@ public class TrabajadorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         configurarColumnas();
+
+        tablaTrabajadores.setColumnResizePolicy(
+                TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN
+        );
+
         cargarTrabajadores();
     }
 

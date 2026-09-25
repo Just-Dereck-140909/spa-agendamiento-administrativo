@@ -34,7 +34,16 @@ public class TrabajadorService {
     }
 
     public void actualizarTrabajador(Trabajador trabajador) {
-        trabajadorRepository.update(trabajador);
+        
+    String correoGenerado = generarCorreo(
+            trabajador.getNombreTrabajador(),
+            trabajador.getApellidoTrabajador(),
+            trabajador.getIdTrabajador()
+    );
+
+    trabajador.setTrabajadorCorreoElectronico(correoGenerado);
+
+    trabajadorRepository.update(trabajador);
     }
 
     public void eliminarTrabajador(String id) {
