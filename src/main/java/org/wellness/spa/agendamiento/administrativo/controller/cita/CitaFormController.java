@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -15,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
@@ -61,6 +63,12 @@ public class CitaFormController implements Initializable {
     @FXML
     private ComboBox<String> cbEstado;
     
+    @FXML
+    private Button btnCerrar;
+    
+    @FXML
+    private Button btnGuardar;
+    
     
 
     @Override
@@ -70,6 +78,18 @@ public class CitaFormController implements Initializable {
         cargarClientes();
         cargarTrabajadores();
         cargarTratamientos();
+        
+        Platform.runLater(() -> {
+
+            Stage stage = (Stage) btnCerrar.getScene().getWindow();
+
+            stage.setOnCloseRequest(event -> {
+
+                if (!confirmarCierre()) {
+                    event.consume();
+                }
+            });
+        });
         
     }    
     
@@ -210,38 +230,54 @@ public class CitaFormController implements Initializable {
     @FXML
     private void handleCerrarAction(ActionEvent event) {
 
-        boolean hayDatos = dpFecha.getValue() != null
-                || cbHora.getValue() != null
-                || cbCliente.getValue() != null
-                || cbTrabajador.getValue() != null
-                || cbTratamiento.getValue() != null;
-
-        if (hayDatos) {
-
-            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
-            alerta.setTitle("Cerrar formulario");
-            alerta.setHeaderText("Hay datos ingresados");
-            alerta.setContentText("¿Está seguro de que desea cerrar? Se perderán los datos ingresados.");
-
-            ButtonType botonSi = new ButtonType("Sí");
-            ButtonType botonNo = new ButtonType("No");
-
-            alerta.getButtonTypes().setAll(botonSi, botonNo);
-
-            Optional<ButtonType> resultado = alerta.showAndWait();
-
-            if (resultado.isPresent() && resultado.get() == botonSi) {
-                cerrarVentana(event);
-            }
-
-        } else {
+        if (confirmarCierre()) {
             cerrarVentana(event);
         }
     }
     
     
     
+    
+    
     //Metodos de funcionamiento
+    
+    private boolean confirmarCierre() {
+
+        if (!hayDatosIngresados()) {
+            return true;
+        }
+
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+
+        alerta.setTitle("Cerrar formulario");
+        alerta.setHeaderText("Hay datos ingresados");
+        alerta.setContentText(
+                "¿Está seguro de que desea cerrar? "
+                + "Se perderán los datos ingresados."
+        );
+
+        ButtonType botonSi = new ButtonType("Sí");
+        ButtonType botonNo = new ButtonType("No");
+
+        alerta.getButtonTypes().setAll(botonSi, botonNo);
+
+        Optional<ButtonType> resultado = alerta.showAndWait();
+
+        return resultado.isPresent()
+                && resultado.get() == botonSi;
+    }
+
+    
+    private boolean hayDatosIngresados() {
+
+        return dpFecha.getValue() != null
+                || cbHora.getValue() != null
+                || cbCliente.getValue() != null
+                || cbTrabajador.getValue() != null
+                || cbTratamiento.getValue() != null;
+    }
+    
+    
     private void cargarHoras() {
 
         LocalTime horaInicio = LocalTime.of(10, 0);

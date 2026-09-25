@@ -150,17 +150,31 @@ public class TratamientosController {
                 + "\"?"
         );
 
-       confirmacion.showAndWait().ifPresent(respuesta -> {
+        confirmacion.showAndWait().ifPresent(respuesta -> {
 
-    if (respuesta == javafx.scene.control.ButtonType.OK) {
+            if (respuesta == javafx.scene.control.ButtonType.OK) {
 
-        tratamientoService.eliminar(
-                tratamientoSeleccionado.getIdTratamiento()
-        );
+                String idTratamiento =
+                        tratamientoSeleccionado.getIdTratamiento();
 
-        cargarTratamientos();
-    }
-});
+                // Verificar si el tratamiento está asociado a alguna cita
+                if (tratamientoService.tieneCitasAsociadas(idTratamiento)) {
+
+                    mostrarMensaje(
+                            Alert.AlertType.WARNING,
+                            "No se puede eliminar",
+                            "El tratamiento tiene citas asociadas. "
+                            + "Debe eliminar primero las citas relacionadas."
+                    );
+
+                    return;
+                }
+
+                tratamientoService.eliminar(idTratamiento);
+
+                cargarTratamientos();
+            }
+        });
     }
 
     private void abrirFormulario(Tratamiento tratamiento) {

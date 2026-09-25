@@ -208,9 +208,22 @@ public class TrabajadorController implements Initializable {
 
             if (respuesta == javafx.scene.control.ButtonType.OK) {
 
-                trabajadorService.eliminarTrabajador(
-                        trabajadorSeleccionado.getIdTrabajador()
-                );
+                String idTrabajador =
+                        trabajadorSeleccionado.getIdTrabajador();
+
+                if (trabajadorService.tieneCitasAsociadas(idTrabajador)) {
+
+                    mostrarAlerta(
+                            Alert.AlertType.WARNING,
+                            "No se puede eliminar",
+                            "El trabajador tiene citas asociadas. "
+                            + "Debe eliminar primero las citas relacionadas."
+                    );
+
+                    return;
+                }
+
+                trabajadorService.eliminarTrabajador(idTrabajador);
 
                 cargarTrabajadores();
 

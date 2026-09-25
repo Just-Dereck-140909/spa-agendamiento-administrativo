@@ -168,9 +168,22 @@ private Button btnVolverMenu;
         if (resultado.isPresent()
                 && resultado.get() == botonSi) {
 
-            clienteService.eliminarCliente(
-                    clienteSeleccionado.getIdCliente()
-            );
+            String idCliente =
+                    clienteSeleccionado.getIdCliente();
+
+            if (clienteService.tieneCitasAsociadas(idCliente)) {
+
+                mostrarAlerta(
+                        Alert.AlertType.WARNING,
+                        "No se puede eliminar",
+                        "El cliente tiene citas asociadas. "
+                        + "Debe eliminar primero las citas relacionadas."
+                );
+
+                return;
+            }
+
+            clienteService.eliminarCliente(idCliente);
 
             cargarClientes();
 
@@ -210,9 +223,7 @@ private Button btnVolverMenu;
         }
     }
 
-    private void abrirFormulario(
-            Cliente clienteSeleccionado,
-            ActionEvent event) {
+    private void abrirFormulario( Cliente clienteSeleccionado, ActionEvent event) {
 
         try {
 
@@ -257,10 +268,7 @@ private Button btnVolverMenu;
         }
     }
 
-    private void mostrarAlerta(
-            Alert.AlertType tipo,
-            String headerText,
-            String mensaje) {
+    private void mostrarAlerta(Alert.AlertType tipo, String headerText, String mensaje) {
 
         Alert alerta = new Alert(tipo);
 

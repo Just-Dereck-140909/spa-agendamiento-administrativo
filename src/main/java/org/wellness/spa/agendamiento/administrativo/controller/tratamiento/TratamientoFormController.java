@@ -2,6 +2,7 @@ package main.java.org.wellness.spa.agendamiento.administrativo.controller.tratam
 
 import java.math.BigDecimal;
 import java.util.Optional;
+import javafx.application.Platform;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -58,6 +59,18 @@ public class TratamientoFormController {
                 "150 minutos",
                 "180 minutos"
         ));
+
+        Platform.runLater(() -> {
+
+            Stage stage = (Stage) btnCerrar.getScene().getWindow();
+
+            stage.setOnCloseRequest(event -> {
+
+                if (!confirmarCierre()) {
+                    event.consume();
+                }
+            });
+        });
     }
 
     public void cargarTratamiento(Tratamiento tratamiento) {
@@ -140,41 +153,14 @@ public class TratamientoFormController {
 
     @FXML
     private void handleCerrarAction() {
-
-        boolean hayDatos =
-                !txtNombreTratamiento.getText().trim().isEmpty()
-                || !txtCostoTratamiento.getText().trim().isEmpty()
-                || !txtDescripcionTratamiento.getText().trim().isEmpty()
-                || cbDuracionTratamiento.getValue() != null;
-
-        if (hayDatos) {
-
-            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
-
-            alerta.setTitle("Cerrar formulario");
-            alerta.setHeaderText("Hay datos ingresados");
-            alerta.setContentText(
-                    "¿Está seguro de que desea cerrar? "
-                    + "Se perderán los datos ingresados."
-            );
-
-            ButtonType botonSi = new ButtonType("Sí");
-            ButtonType botonNo = new ButtonType("No");
-
-            alerta.getButtonTypes().setAll(botonSi, botonNo);
-
-            Optional<ButtonType> resultado = alerta.showAndWait();
-
-            if (resultado.isPresent() && resultado.get() == botonSi) {
-                cerrarFormulario();
-            }
-
-        } else {
-
+        if(confirmarCierre()){
             cerrarFormulario();
         }
     }
-
+    
+    
+    //Metodos para funcionamiento
+    
     private boolean validarCampos() {
 
         if (txtNombreTratamiento.getText().trim().isEmpty()) {
@@ -237,8 +223,43 @@ public class TratamientoFormController {
     }
 
     private void cerrarFormulario() {
-
+        
         Stage stage = (Stage) btnCerrar.getScene().getWindow();
         stage.close();
     }
+    
+    private boolean confirmarCierre() {
+
+        if (!hayDatosIngresados()) {
+            return true;
+        }
+
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+
+        alerta.setTitle("Cerrar formulario");
+        alerta.setHeaderText("Hay datos ingresados");
+        alerta.setContentText(
+                "¿Está seguro de que desea cerrar? "
+                + "Se perderán los datos ingresados."
+        );
+
+        ButtonType botonSi = new ButtonType("Sí");
+        ButtonType botonNo = new ButtonType("No");
+
+        alerta.getButtonTypes().setAll(botonSi, botonNo);
+
+        Optional<ButtonType> resultado = alerta.showAndWait();
+
+        return resultado.isPresent()
+                && resultado.get() == botonSi;
+    }
+    
+    
+    private boolean hayDatosIngresados() {
+        return !txtNombreTratamiento.getText().trim().isEmpty()
+                || !txtCostoTratamiento.getText().trim().isEmpty()
+                || !txtDescripcionTratamiento.getText().trim().isEmpty()
+                || cbDuracionTratamiento.getValue() != null;
+    }
+    
 }
