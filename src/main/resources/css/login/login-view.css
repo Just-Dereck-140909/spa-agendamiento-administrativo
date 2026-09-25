@@ -1,0 +1,150 @@
+.root {
+    -fx-background-color: #E8B2AA;
+    -fx-font-family: "Georgia";
+}
+
+/* =========================================
+   BURBUJA DEL FORMULARIO
+   ========================================= */
+
+.login-box {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 22px;
+    -fx-border-color: #A5B8B1;
+    -fx-border-width: 2px;
+    -fx-border-radius: 22px;
+    -fx-padding: 25px;
+    -fx-effect: dropshadow(gaussian, #A5B8B1, 18, 0.35, 0, 4);
+}
+
+/* =========================================
+   TITULO BIENVENIDO
+   ========================================= */
+
+.titulo-bienvenida {
+    -fx-text-fill: #2E4053;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+/* =========================================
+   ETIQUETAS
+   ========================================= */
+
+.label {
+    -fx-text-fill: #2E4053;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* =========================================
+   CAMPOS DE TEXTO
+   ========================================= */
+
+.text-field,
+.password-field {
+    -fx-background-color: #F8EEEC;
+    -fx-text-fill: #2E4053;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-width: 2px;
+    -fx-border-color: #A5B8B1;
+    -fx-padding: 9px 12px;
+}
+
+.text-field:hover,
+.password-field:hover {
+    -fx-border-color: #629988;
+}
+
+.text-field:focused,
+.password-field:focused {
+    -fx-border-color: #629988;
+    -fx-effect: dropshadow(gaussian, #A5B8B1, 12, 0.45, 0, 0);
+}
+
+/* =========================================
+   BOTONES
+   ========================================= */
+
+.button {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-padding: 10px 20px;
+}
+
+/* =========================================
+   BOTON ENTRAR
+   ========================================= */
+
+.button[text="Entrar"] {
+    -fx-background-color: #629988;
+    -fx-text-fill: white;
+    -fx-border-color: #629988;
+}
+
+.button[text="Entrar"]:hover {
+    -fx-background-color: #2E6F61;
+    -fx-text-fill: white;
+    -fx-border-color: #2E4053;
+    -fx-effect: dropshadow(gaussian, #A5B8B1, 14, 0.5, 0, 0);
+}
+
+.button[text="Entrar"]:focused {
+    -fx-background-color: #2E6F61;
+    -fx-text-fill: white;
+    -fx-border-color: #E8B2AA;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, #E8B2AA, 16, 0.6, 0, 0);
+}
+
+/* =========================================
+   BOTON SALIR
+   ========================================= */
+
+.button[text="Salir"] {
+    -fx-background-color: #8C2D38;
+    -fx-text-fill: white;
+    -fx-border-color: #8C2D38;
+}
+
+.button[text="Salir"]:hover {
+    -fx-background-color: #6F202A;
+    -fx-text-fill: white;
+    -fx-border-color: #E8B2AA;
+    -fx-effect: dropshadow(gaussian, #E8B2AA, 14, 0.5, 0, 0);
+}
+
+.button[text="Salir"]:focused {
+    -fx-background-color: #6F202A;
+    -fx-text-fill: white;
+    -fx-border-color: #E8B2AA;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, #E8B2AA, 16, 0.6, 0, 0);
+}
+/* =========================================
+   TEXTO DEL LADO DERECHO
+   ========================================= */
+
+.titulo-imagen {
+    -fx-text-fill: #2E4053;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.subtitulo-imagen {
+    -fx-text-fill: #2E4053;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}

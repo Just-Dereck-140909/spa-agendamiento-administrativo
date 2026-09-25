@@ -11,8 +11,10 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane prefHeight="650.0" prefWidth="1000.0"
+            stylesheets="main/resources/css/tratamiento/tratamiento-view.css" 
             xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
+            
             fx:controller="main.java.org.wellness.spa.agendamiento.administrativo.controller.tratamiento.TratamientosController">
 
     <!-- ================= HEADER ================= -->
@@ -96,7 +98,7 @@
                 </columns>
 
                 <columnResizePolicy>
-                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                  
                 </columnResizePolicy>
 
             </TableView>

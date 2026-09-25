@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="300.0" prefWidth="400.0" spacing="15" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.org.wellness.spa.agendamiento.administrativo.controller.trabajador.TrabajadorFormController">
+<VBox prefHeight="300.0" prefWidth="400.0" spacing="15" stylesheets="main/resources/css/trabajador/trabajador-form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.org.wellness.spa.agendamiento.administrativo.controller.trabajador.TrabajadorFormController">
 
     <padding>
         <Insets bottom="20" left="25" right="25" top="20" />

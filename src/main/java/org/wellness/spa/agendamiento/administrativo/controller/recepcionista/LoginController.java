@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
@@ -46,45 +45,70 @@ public class LoginController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Wellness Spa");
             alert.setHeaderText("Campos incompletos");
-            alert.setContentText("Por favor, complete todos los campos.");
+            alert.setContentText(
+                    "Por favor, complete todos los campos."
+            );
             alert.showAndWait();
 
             return;
         }
 
         Recepcionista recepcionista =
-                recepcionistaService.iniciarSesion(usuario, contrasena);
+                recepcionistaService.iniciarSesion(
+                        usuario,
+                        contrasena
+                );
 
         if (recepcionista != null) {
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert =
+                    new Alert(Alert.AlertType.INFORMATION);
+
             alert.setTitle("Wellness Spa");
-            alert.setHeaderText("Inicio de sesión exitoso");
+            alert.setHeaderText(
+                    "Inicio de sesión exitoso"
+            );
+
             alert.setContentText(
                     "¡Bienvenido, "
                     + recepcionista.getNombreRecepcionista()
                     + "!"
             );
+
             alert.showAndWait();
 
-            SceneManager sceneManager = new SceneManager(
-            (Stage) ((Node) event.getSource()).getScene().getWindow()
-            );
+            SceneManager sceneManager =
+                    new SceneManager(
+                            (Stage) ((javafx.scene.Node) event.getSource())
+                                    .getScene()
+                                    .getWindow()
+                    );
 
             try {
+
                 sceneManager.cambiarEscena(
-                        "/main/resources/view/menu-principal.fxml"
+                        "/main/resources/view/menuprincipal/menu-principal.fxml"
                 );
+
             } catch (IOException e) {
+
                 e.printStackTrace();
             }
 
         } else {
 
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            Alert alert =
+                    new Alert(Alert.AlertType.ERROR);
+
             alert.setTitle("Wellness Spa");
-            alert.setHeaderText("Error de autenticación");
-            alert.setContentText("Usuario o contraseña incorrectos.");
+            alert.setHeaderText(
+                    "Error de autenticación"
+            );
+
+            alert.setContentText(
+                    "Usuario o contraseña incorrectos."
+            );
+
             alert.showAndWait();
         }
     }
@@ -92,12 +116,18 @@ public class LoginController implements Initializable {
     @FXML
     private void salir(ActionEvent event) {
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert =
+                new Alert(Alert.AlertType.CONFIRMATION);
+
         alert.setTitle("Wellness Spa");
         alert.setHeaderText("Cerrar aplicación");
-        alert.setContentText("¿Está seguro de que desea salir?");
+        alert.setContentText(
+                "¿Está seguro de que desea salir?"
+        );
 
-        if (alert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
+        if (alert.showAndWait()
+                .orElse(ButtonType.CANCEL) == ButtonType.OK) {
+
             System.exit(0);
         }
     }

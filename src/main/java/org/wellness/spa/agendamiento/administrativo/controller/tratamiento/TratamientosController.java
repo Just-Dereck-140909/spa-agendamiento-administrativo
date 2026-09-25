@@ -237,7 +237,7 @@ public class TratamientosController {
             );
  
             sceneManager.cambiarEscena(
-                    "/main/resources/view/menu-principal.fxml"
+                    "/main/resources/view/menuprincipal/menu-principal.fxml"
             );
  
         } catch (IOException e) {

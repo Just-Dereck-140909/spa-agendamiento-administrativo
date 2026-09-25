@@ -175,7 +175,7 @@ public class MenuPrincipalController implements Initializable {
 
         try {
             sceneManager.cambiarEscena(
-                    "/main/resources/view/login-view.fxml"
+                    "/main/resources/view/login/login-view.fxml"
             );
         } catch (IOException e) {
             e.printStackTrace();
