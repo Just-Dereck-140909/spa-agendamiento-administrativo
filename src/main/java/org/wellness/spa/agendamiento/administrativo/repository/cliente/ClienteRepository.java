@@ -34,7 +34,6 @@ public class ClienteRepository implements Crud<Cliente> {
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
@@ -58,7 +57,6 @@ public class ClienteRepository implements Crud<Cliente> {
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
@@ -74,7 +72,6 @@ public class ClienteRepository implements Crud<Cliente> {
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
@@ -94,7 +91,6 @@ public class ClienteRepository implements Crud<Cliente> {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return clientes;
@@ -118,7 +114,6 @@ public class ClienteRepository implements Crud<Cliente> {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return null;
@@ -140,7 +135,6 @@ public class ClienteRepository implements Crud<Cliente> {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return null;
@@ -176,7 +170,6 @@ public class ClienteRepository implements Crud<Cliente> {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return false;

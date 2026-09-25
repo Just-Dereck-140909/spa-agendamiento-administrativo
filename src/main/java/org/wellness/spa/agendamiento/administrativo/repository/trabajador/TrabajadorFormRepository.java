@@ -38,9 +38,6 @@ public class TrabajadorFormRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println(
-                    "Error al listar ocupaciones: "
-                    + e.getMessage());
         }
 
         return ocupaciones;

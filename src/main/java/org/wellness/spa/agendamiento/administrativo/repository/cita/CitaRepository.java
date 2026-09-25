@@ -46,7 +46,6 @@ public class CitaRepository implements Crud<Cita> {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Error al guardar la cita: " + e.getMessage());
         }
     }
 
@@ -80,7 +79,6 @@ public class CitaRepository implements Crud<Cita> {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Error al actualizar la cita: " + e.getMessage());
         }
     }
     
@@ -102,7 +100,6 @@ public class CitaRepository implements Crud<Cita> {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Error al eliminar la cita: " + e.getMessage());
         }
     }
     
@@ -145,7 +142,6 @@ public class CitaRepository implements Crud<Cita> {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al listar las citas: " + e.getMessage());
         }
 
         return lista;
@@ -190,7 +186,6 @@ public class CitaRepository implements Crud<Cita> {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al buscar la cita: " + e.getMessage());
         }
 
         return null;
@@ -216,7 +211,6 @@ public class CitaRepository implements Crud<Cita> {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al obtener el último ID de cita: " + e.getMessage());
         }
 
         return null;
@@ -269,7 +263,6 @@ public class CitaRepository implements Crud<Cita> {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al listar el resumen de citas: " + e.getMessage());
         }
 
         return lista;
@@ -320,7 +313,6 @@ public class CitaRepository implements Crud<Cita> {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al listar el detalle de citas: " + e.getMessage());
         }
 
         return lista;

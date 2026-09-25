@@ -34,7 +34,6 @@ public class TrabajadorRepository implements Crud<Trabajador> {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Error al guardar trabajador: " + e.getMessage());
         }
     }
 
@@ -42,10 +41,11 @@ public class TrabajadorRepository implements Crud<Trabajador> {
     public void update(Trabajador trabajador) {
 
         String sql = "UPDATE trabajador SET "
-                + "nombre_trabajador = ?, "
-                + "apellido_trabajador = ?, "
-                + "id_ocupacion = ? "
-                + "WHERE id_trabajador = ?";
+            + "nombre_trabajador = ?, "
+            + "apellido_trabajador = ?, "
+            + "id_ocupacion = ?, "
+            + "trabajador_correo_electronico = ? "
+            + "WHERE id_trabajador = ?";
 
         try (Connection connection = DataBaseConnection.getConnectionDataBase();
                 PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -53,12 +53,13 @@ public class TrabajadorRepository implements Crud<Trabajador> {
             statement.setString(1, trabajador.getNombreTrabajador());
             statement.setString(2, trabajador.getApellidoTrabajador());
             statement.setString(3, trabajador.getIdOcupacion());
-            statement.setString(4, trabajador.getIdTrabajador());
+            statement.setString(4, trabajador.getTrabajadorCorreoElectronico());
+            statement.setString(5, trabajador.getIdTrabajador());
+
 
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Error al actualizar trabajador: " + e.getMessage());
         }
     }
 
@@ -75,7 +76,6 @@ public class TrabajadorRepository implements Crud<Trabajador> {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Error al eliminar trabajador: " + e.getMessage());
         }
     }
 
@@ -113,7 +113,6 @@ public class TrabajadorRepository implements Crud<Trabajador> {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al listar trabajadores: " + e.getMessage());
         }
 
         return trabajadores;
@@ -155,7 +154,6 @@ public class TrabajadorRepository implements Crud<Trabajador> {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al buscar trabajador: " + e.getMessage());
         }
 
         return null;
@@ -177,7 +175,6 @@ public class TrabajadorRepository implements Crud<Trabajador> {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al obtener último ID: " + e.getMessage());
         }
 
         return null;
@@ -225,9 +222,6 @@ public class TrabajadorRepository implements Crud<Trabajador> {
             }
 
         } catch (SQLException e) {
-            System.out.println(
-                    "Error al listar detalles de trabajadores: "
-                    + e.getMessage());
         }
 
         return trabajadores;
@@ -252,10 +246,6 @@ public class TrabajadorRepository implements Crud<Trabajador> {
             }
 
         } catch (SQLException e) {
-            System.out.println(
-                    "Error al comprobar citas del trabajador: "
-                    + e.getMessage()
-            );
         }
 
         return false;

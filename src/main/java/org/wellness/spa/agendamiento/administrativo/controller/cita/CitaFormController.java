@@ -223,7 +223,6 @@ public class CitaFormController implements Initializable {
                     modoEdicion ?"No se pudo actualizar la cita." : "No se pudo guardarla cita"
             );
 
-            e.printStackTrace();
         }
     }
 

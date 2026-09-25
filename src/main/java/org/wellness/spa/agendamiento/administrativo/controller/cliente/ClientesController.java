@@ -62,6 +62,11 @@ private Button btnVolverMenu;
     public void initialize() {
 
         configurarColumnas();
+
+        tablaClientes.setColumnResizePolicy(
+                TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN
+        );
+
         cargarClientes();
     }
 
@@ -213,7 +218,6 @@ private Button btnVolverMenu;
 
         } catch (IOException e) {
 
-            e.printStackTrace();
 
             mostrarAlerta(
                     Alert.AlertType.ERROR,
@@ -258,7 +262,6 @@ private Button btnVolverMenu;
 
         } catch (IOException e) {
 
-            e.printStackTrace();
 
             mostrarAlerta(
                     Alert.AlertType.ERROR,

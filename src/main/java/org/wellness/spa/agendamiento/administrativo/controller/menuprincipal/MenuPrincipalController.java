@@ -6,8 +6,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
 
-import javafx.scene.Node;
-import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -57,7 +55,7 @@ public class MenuPrincipalController implements Initializable {
     @FXML
     private Label lblTituloTabla;
 
- @FXML
+    @FXML
     private TableView<CitaResumen> tablaCitas;
 
     @FXML
@@ -89,8 +87,7 @@ public class MenuPrincipalController implements Initializable {
     public MenuPrincipalController() {
         citaService = new CitaService();
     }
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurarColumnas();
@@ -99,7 +96,7 @@ public class MenuPrincipalController implements Initializable {
 
     @FXML
     private void handleClientesAction(ActionEvent event) {
-        
+
         SceneManager sceneManager = new SceneManager(
                 (Stage) ((Node) event.getSource()).getScene().getWindow()
         );
@@ -109,67 +106,62 @@ public class MenuPrincipalController implements Initializable {
                     "/main/resources/view/cliente/cliente-view.fxml"
             );
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
     @FXML
     private void handleTratamientosAction(ActionEvent event) {
 
-    try {
+        try {
 
-        Stage stage = (Stage) ((Node) event.getSource())
-                .getScene()
-                .getWindow();
+            Stage stage = (Stage) ((Node) event.getSource())
+                    .getScene()
+                    .getWindow();
 
-        SceneManager sceneManager = new SceneManager(stage);
+            SceneManager sceneManager = new SceneManager(stage);
 
-        sceneManager.cambiarEscena(
-                "/main/resources/view/tratamiento/tratamiento-view.fxml"
-        );
+            sceneManager.cambiarEscena(
+                    "/main/resources/view/tratamiento/tratamiento-view.fxml"
+            );
 
-    } catch (IOException e) {
-
-        System.out.println(
-                "Error al abrir la vista de tratamientos: "
-                + e.getMessage()
-        );
+        } catch (IOException e) {
+        }
     }
-}
 
     @FXML
     private void handleCitasAction(ActionEvent event) {
+
         SceneManager sceneManager = new SceneManager(
-        (Stage)((Node) event.getSource()).getScene().getWindow()
+                (Stage) ((Node) event.getSource()).getScene().getWindow()
         );
-        
-        try{
+
+        try {
             sceneManager.cambiarEscena(
                     "/main/resources/view/cita/citas-view.fxml"
             );
-        } catch(IOException e){
-            e.printStackTrace();
+        } catch (IOException e) {
         }
     }
 
     @FXML
     private void handleTrabajadoresAction(ActionEvent event) {
+
         SceneManager sceneManager = new SceneManager(
-            (Stage)((Node) event.getSource()).getScene().getWindow()
+                (Stage) ((Node) event.getSource()).getScene().getWindow()
         );
 
         try {
             sceneManager.cambiarEscena(
                     "/main/resources/view/trabajador/trabajadores-view.fxml"
             );
-        } catch(IOException e) {
-            e.printStackTrace();
+        } catch (IOException e) {
         }
     }
 
     @FXML
     private void handleCerrarSesionAction(ActionEvent event) {
-            SceneManager sceneManager = new SceneManager(
+
+        SceneManager sceneManager = new SceneManager(
                 (Stage) ((Node) event.getSource()).getScene().getWindow()
         );
 
@@ -178,37 +170,54 @@ public class MenuPrincipalController implements Initializable {
                     "/main/resources/view/login/login-view.fxml"
             );
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
-    
-    
+
     private void configurarColumnas() {
 
-        colNombreCliente.setCellValueFactory(new PropertyValueFactory<>("nombreCliente"));
+        colNombreCliente.setCellValueFactory(
+                new PropertyValueFactory<>("nombreCliente")
+        );
 
-        colApellidoCliente.setCellValueFactory(new PropertyValueFactory<>("apellidoCliente"));
+        colApellidoCliente.setCellValueFactory(
+                new PropertyValueFactory<>("apellidoCliente")
+        );
 
-        colTrabajador.setCellValueFactory(new PropertyValueFactory<>("trabajador"));
+        colTrabajador.setCellValueFactory(
+                new PropertyValueFactory<>("trabajador")
+        );
 
-        colTratamiento.setCellValueFactory(new PropertyValueFactory<>("tratamiento"));
+        colTratamiento.setCellValueFactory(
+                new PropertyValueFactory<>("tratamiento")
+        );
 
-        colDescripcionTratamiento.setCellValueFactory(new PropertyValueFactory<>("descripcionTratamiento"));
+        colDescripcionTratamiento.setCellValueFactory(
+                new PropertyValueFactory<>("descripcionTratamiento")
+        );
 
-        colHora.setCellValueFactory(new PropertyValueFactory<>("hora"));
+        colHora.setCellValueFactory(
+                new PropertyValueFactory<>("hora")
+        );
 
-        colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+        colFecha.setCellValueFactory(
+                new PropertyValueFactory<>("fecha")
+        );
 
-        colEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        colEstado.setCellValueFactory(
+                new PropertyValueFactory<>("estado")
+        );
     }
-    
-    
+
     private void cargarCitas() {
-        tablaCitas.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
+
+        tablaCitas.setColumnResizePolicy(
+                TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN
+        );
+
         tablaCitas.setItems(
-                FXCollections.observableArrayList
-                (citaService.listarCitasResumen()));
+                FXCollections.observableArrayList(
+                        citaService.listarCitasResumen()
+                )
+        );
     }
-    
-    
 }
