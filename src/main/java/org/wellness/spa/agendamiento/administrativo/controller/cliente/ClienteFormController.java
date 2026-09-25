@@ -1,6 +1,7 @@
 package main.java.org.wellness.spa.agendamiento.administrativo.controller.cliente;
 
 import java.util.Optional;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -52,6 +53,18 @@ public class ClienteFormController {
                     return null;
                 })
         );
+        
+        Platform.runLater(() -> {
+
+            Stage stage = (Stage) btnCerrar.getScene().getWindow();
+
+            stage.setOnCloseRequest(event -> {
+
+                if (!confirmarCierre()) {
+                    event.consume();
+                }
+            });
+        });
     }
 
 
@@ -153,45 +166,53 @@ public class ClienteFormController {
         alerta.showAndWait();
     }
 
+    
     @FXML
     private void handleCerrarAction(ActionEvent event) {
-
-        boolean hayDatos
-                = !txtNombre.getText().trim().isEmpty()
-                || !txtApellido.getText().trim().isEmpty()
-                || !txtTelefono.getText().trim().isEmpty();
-
-        if (hayDatos) {
-
-            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
-
-            alerta.setTitle("Cerrar formulario");
-            alerta.setHeaderText("Hay datos ingresados");
-
-            alerta.setContentText(
-                    "¿Está seguro de que desea cerrar? "
-                    + "Se perderán los datos ingresados."
-            );
-
-            ButtonType botonSi = new ButtonType("Sí");
-            ButtonType botonNo = new ButtonType("No");
-
-            alerta.getButtonTypes().setAll(botonSi, botonNo);
-
-            Optional<ButtonType> resultado = alerta.showAndWait();
-
-            if (resultado.isPresent()
-                    && resultado.get() == botonSi) {
-
-                cerrarVentana();
-            }
-
-        } else {
-
+        if (confirmarCierre()) {
             cerrarVentana();
         }
     }
+    
+    private boolean confirmarCierre() {
 
+        if (!hayDatosIngresados()) {
+            return true;
+        }
+
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+
+        alerta.setTitle("Cerrar formulario");
+        alerta.setHeaderText("Hay datos ingresados");
+
+        alerta.setContentText(
+                "¿Está seguro de que desea cerrar? "
+                + "Se perderán los datos ingresados."
+        );
+
+        ButtonType botonSi = new ButtonType("Sí");
+        ButtonType botonNo = new ButtonType("No");
+
+        alerta.getButtonTypes().setAll(
+                botonSi,
+                botonNo
+        );
+
+        Optional<ButtonType> resultado = alerta.showAndWait();
+
+        return resultado.isPresent()
+                && resultado.get() == botonSi;
+    }
+    
+    
+    private boolean hayDatosIngresados() {
+
+        return !txtNombre.getText().trim().isEmpty()
+                || !txtApellido.getText().trim().isEmpty()
+                || !txtTelefono.getText().trim().isEmpty();
+    }
+    
+    
     private boolean validarCampos() {
 
         if (txtNombre.getText().isBlank()

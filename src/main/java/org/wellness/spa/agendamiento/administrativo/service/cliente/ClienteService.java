@@ -45,6 +45,10 @@ public class ClienteService {
     public Cliente buscarClientePorId(String id) {
         return clienteRepository.buscarPorId(id);
     }
+    
+    public boolean tieneCitasAsociadas(String idCliente) {
+        return clienteRepository.tieneCitasAsociadas(idCliente);
+    }
 
     private String generarSiguienteIdCliente() {
 

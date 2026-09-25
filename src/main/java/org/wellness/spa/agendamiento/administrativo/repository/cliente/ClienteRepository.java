@@ -156,4 +156,29 @@ public class ClienteRepository implements Crud<Cliente> {
                 rs.getString("cliente_correo_electronico")
         );
     }
+    
+    public boolean tieneCitasAsociadas(String idCliente) {
+
+        String sql = "SELECT COUNT(*) "
+                + "FROM cita "
+                + "WHERE id_cliente = ?";
+
+        try (Connection conexion = DataBaseConnection.getConnectionDataBase();
+             PreparedStatement ps = conexion.prepareStatement(sql)) {
+
+            ps.setString(1, idCliente);
+
+            try (ResultSet rs = ps.executeQuery()) {
+
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 }

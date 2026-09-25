@@ -131,6 +131,7 @@ public class TratamientoRepository implements Crud<Tratamiento> {
         return lista;
     }
 
+    
     @Override
     public Tratamiento buscarPorId(String id) {
 
@@ -193,5 +194,31 @@ public class TratamientoRepository implements Crud<Tratamiento> {
         }
 
         return null;
+    }
+    
+    
+    public boolean tieneCitasAsociadas(String idTratamiento) {
+
+        String sql = "SELECT COUNT(*) "
+                + "FROM cita "
+                + "WHERE id_tratamiento = ?";
+
+        try (Connection conexion = DataBaseConnection.getConnectionDataBase();
+             PreparedStatement ps = conexion.prepareStatement(sql)) {
+
+            ps.setString(1, idTratamiento);
+
+            try (ResultSet rs = ps.executeQuery()) {
+
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }
